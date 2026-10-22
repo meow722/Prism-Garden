@@ -155,6 +155,76 @@ body::before {
   color: #9ca3af;
 }
 
+/* ===== 细节优化 ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+#landing > * { animation: fadeUp .7s ease both; }
+#landing > .brand { animation-delay: .05s; }
+#landing > .title { animation-delay: .15s; }
+#landing > .sub { animation-delay: .25s; }
+#landing > .gesture-grid { animation-delay: .35s; }
+#landing > .start-btn { animation-delay: .45s; }
+#landing > .privacy { animation-delay: .55s; }
+
+.title .zh { letter-spacing: 2px; }
+.title .en { margin-top: 14px; }
+
+/* 手势卡片：顶部彩色点缀 + 悬停浮起 */
+.gesture-card { position: relative; overflow: hidden; }
+.gesture-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent, var(--teal)), transparent);
+  opacity: .75;
+}
+.gesture-card:nth-child(1) { --accent: #2dd4bf; }
+.gesture-card:nth-child(2) { --accent: #f472b6; }
+.gesture-card:nth-child(3) { --accent: #60a5fa; }
+.gesture-card:nth-child(4) { --accent: #a78bfa; }
+.gesture-card:nth-child(5) { --accent: #fbbf24; }
+.gesture-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 48px rgba(120, 130, 170, 0.26);
+}
+.gesture-card:hover .g-emoji { transform: scale(1.12); }
+.g-emoji { transition: transform .25s ease; }
+.g-en { color: var(--accent, var(--teal)); }
+
+/* 开始按钮：呼吸光晕 */
+.start-btn { position: relative; }
+.start-btn::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  border: 2px solid rgba(120, 180, 255, 0.35);
+  animation: pulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes pulse {
+  0% { opacity: .7; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.12); }
+}
+
+/* 键盘可达焦点 */
+.start-btn:focus-visible,
+.hud-btn:focus-visible,
+.test-btns button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* 落地页滚动条 */
+#landing::-webkit-scrollbar { width: 8px; }
+#landing::-webkit-scrollbar-thumb {
+  background: rgba(150, 160, 190, 0.35);
+  border-radius: 99px;
+}
+
 /* ===== HUD ===== */
 #hud {
   position: fixed;
@@ -270,4 +340,3 @@ body::before {
   #cam-wrap { width: 150px; height: 112px; }
   #test-panel { bottom: 140px; }
 }
-/* （注：内容由AI生成） */
