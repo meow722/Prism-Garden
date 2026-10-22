@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // 非本地环境（含 wtturl 跳转壳）时，强制所有资源回 Cloudflare 直连地址取
+    (function () {
+      var host = location.hostname;
+      if (host !== "localhost" && host !== "127.0.0.1" && host !== "prism-garden-97j.pages.dev") {
+        var b = document.createElement("base");
+        b.href = "https://prism-garden-97j.pages.dev/";
+        document.head.appendChild(b);
+      }
+    })();
+  </script>
   <title>棱镜花园 · Prism Garden</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
