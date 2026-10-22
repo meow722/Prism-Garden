@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>棱镜花园 · Prism Garden</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 主场景 -->
+  <canvas id="scene"></canvas>
+
+  <!-- 摄像头小窗 -->
+  <div id="cam-wrap" class="hidden">
+    <video id="cam" playsinline muted></video>
+    <canvas id="cam-overlay"></canvas>
+    <span id="cam-tag">CAMERA · 仅本机处理</span>
+  </div>
+
+  <!-- 右上角 HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-badge" id="gesture-label">待机 · IDLE</div>
+    <div class="hud-btns">
+      <button class="hud-btn" id="btn-skeleton">骨架：开</button>
+      <button class="hud-btn" id="btn-sound">音效：开</button>
+      <button class="hud-btn" id="btn-guide">玩法</button>
+      <button class="hud-btn" id="btn-test">测试模式</button>
+    </div>
+  </div>
+
+  <!-- 测试模式手势面板 -->
+  <div id="test-panel" class="hidden">
+    <p class="test-title">键盘 1–5 切换手势 / 0 待机</p>
+    <div class="test-btns">
+      <button data-g="idle">0 待机</button>
+      <button data-g="Open_Palm">1 ✋ 张掌</button>
+      <button data-g="Closed_Fist">2 ✊ 握拳</button>
+      <button data-g="Pointing_Up">3 ☝️ 食指</button>
+      <button data-g="Victory">4 ✌️ 剪刀</button>
+      <button data-g="OK">5 👌 换谱</button>
+    </div>
+  </div>
+
+  <!-- 落地页 -->
+  <div id="landing">
+    <div class="brand">◈ PRISM GARDEN · 棱镜花园</div>
+    <h1 class="title">
+      <span class="zh">用手雕塑一束光，</span>
+      <span class="zh accent">让碎片自己歌唱。</span>
+      <span class="en">SCULPT THE LIGHT, <em>LET THE SHARDS SING.</em></span>
+    </h1>
+    <p class="sub">移动你的手，让满屏彩色棱镜生长、凝结、流光、绽放。<br/>
+      Move your hand to grow, crystallize, trace and bloom a field of living prisms.</p>
+
+    <div class="gesture-grid">
+      <div class="gesture-card">
+        <div class="g-emoji">✋</div>
+        <div class="g-name">张掌 · 生长</div>
+        <div class="g-en">OPEN PALM · GATHER</div>
+        <div class="g-desc">碎片向手心汇聚成穹顶，和声渐入</div>
+      </div>
+      <div class="gesture-card">
+        <div class="g-emoji">✊</div>
+        <div class="g-name">握拳 · 凝结</div>
+        <div class="g-en">FIST · CRYSTALLIZE</div>
+        <div class="g-desc">收紧成致密晶体，低音脉冲响起</div>
+      </div>
+      <div class="gesture-card">
+        <div class="g-emoji">☝️</div>
+        <div class="g-name">食指 · 流光</div>
+        <div class="g-en">POINT · TRACE</div>
+        <div class="g-desc">沿指尖方向拖出一条光带，琶音流淌</div>
+      </div>
+      <div class="gesture-card">
+        <div class="g-emoji">✌️</div>
+        <div class="g-name">剪刀 · 绽放</div>
+        <div class="g-en">VICTORY · BLOOM</div>
+        <div class="g-desc">向外绽放成扇形，风铃与雨丝出现</div>
+      </div>
+      <div class="gesture-card wide">
+        <div class="g-emoji">👌</div>
+        <div class="g-name">OK · 换谱</div>
+        <div class="g-en">OK · SHIFT SPECTRUM</div>
+        <div class="g-desc">循环三套光谱：青粉 ↔ 蓝紫 ↔ 蓝橙，音乐随之换调</div>
+      </div>
+    </div>
+
+    <button id="btn-start" class="start-btn">点亮花园 · IGNITE</button>
+    <p class="privacy">摄像头画面仅在本机实时处理，不录制、不上传。<br/>
+      无摄像头时自动进入鼠标 / 键盘测试模式。</p>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
